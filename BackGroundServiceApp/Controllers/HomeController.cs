@@ -10,25 +10,25 @@ namespace BackGroundServiceApp.Controllers
     public class HomeController : ControllerBase
     {
         private readonly ILogger<HomeController> logger;
-        private readonly BackGroundWorkerQueue backgroundWorkerQueue;
+        private readonly BackGroundQueue backgroundQueue;
 
-        public HomeController(ILogger<HomeController> logger, BackGroundWorkerQueue queue)
+        public HomeController(ILogger<HomeController> logger, BackGroundQueue queue)
         {
             this.logger = logger;
-            backgroundWorkerQueue = queue;
+            backgroundQueue = queue;
         }
 
         [Route("index")]
         public async Task<IActionResult> Index()
         {
-            await CallSlowApi();
+            await SlowMethod();
             return Ok("OK - " + DateTime.Now);
         }
 
-        private async Task CallSlowApi()
+        private async Task SlowMethod()
         {
             logger.LogInformation($"Starting at {DateTime.UtcNow.TimeOfDay}");
-            backgroundWorkerQueue.QueueBackgroundWorkItem(async token =>
+            backgroundQueue.QueueBackgroundWorkItem(async token =>
             {
                 await Task.Delay(5000, token);
                 logger.LogInformation($"Done at {DateTime.UtcNow.TimeOfDay}");

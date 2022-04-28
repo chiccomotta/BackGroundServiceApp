@@ -9,9 +9,9 @@ namespace BackGroundServiceApp
 {
     public class LongRunningService : BackgroundService
     {
-        private readonly BackGroundWorkerQueue queue;
+        private readonly BackGroundQueue queue;
 
-        public LongRunningService(BackGroundWorkerQueue queue)
+        public LongRunningService(BackGroundQueue queue)
         {
             this.queue = queue;
         }

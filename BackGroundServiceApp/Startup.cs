@@ -31,7 +31,7 @@ namespace BackGroundServiceApp
             services.AddHostedService<LongRunningService>();
 
             // Registro la coda
-            services.AddSingleton<BackGroundWorkerQueue>();
+            services.AddSingleton<BackGroundQueue>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

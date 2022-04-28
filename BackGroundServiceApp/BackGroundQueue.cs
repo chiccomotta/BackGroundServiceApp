@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BackGroundServiceApp
 {
-    public class BackGroundWorkerQueue
+    public class BackGroundQueue
     {
         private ConcurrentQueue<Func<CancellationToken, Task>> workItems = new ConcurrentQueue<Func<CancellationToken, Task>>();
         private SemaphoreSlim semaphore = new SemaphoreSlim(0);
