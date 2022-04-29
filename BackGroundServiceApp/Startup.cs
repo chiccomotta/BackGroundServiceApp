@@ -30,7 +30,7 @@ namespace BackGroundServiceApp
             // Registro l'hosted service
             services.AddHostedService<LongRunningService>();
 
-            // Registro la coda
+            // Registro la coda delle worker items
             services.AddSingleton<BackGroundQueue>();
         }
 
